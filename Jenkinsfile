@@ -9,7 +9,7 @@ pipeline {
         REMOTE_NEXUS_VERSION = "nexus3"
         REMOTE_NEXUS_PROTOCOL = "http"
         REMOTE_NEXUS_URL = "3.15.236.194:8081"
-        REMOTE_NEXUS_REPOSITORY = "maven-snapshots"
+        REMOTE_NEXUS_REPOSITORY = "maven-releases"
         REMOTE_NEXUS_CREDENTIAL_ID = "Guess-access-Nexus-AWS"
     }
     stages {
