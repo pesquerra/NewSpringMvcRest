@@ -4,7 +4,7 @@
 	<groupId>com.journaldev</groupId>
 	<artifactId>SpringRestExample</artifactId>
 	<name>SpringRestExample</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	  <version>0.0.22</version>	
 	<properties>
 		<org.springframework-version>4.0.0.RELEASE</org.springframework-version>
