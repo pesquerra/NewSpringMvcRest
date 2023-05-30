@@ -25,10 +25,9 @@ pipeline {
                 sh 'mvn clean verify' 
             }
         }
-
         stage('SonarQube analysis') {
             environment {
-                SCANNER_HOME = tool 'SonarQube Scanner installer'
+                SCANNER_HOME = tool 'SonarQube Scanner 4.8.0.2856'
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarRemote', installationName: 'SonarQube Scanner installer') {
