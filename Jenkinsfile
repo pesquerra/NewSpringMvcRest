@@ -31,7 +31,7 @@ pipeline {
                 SCANNER_HOME = tool 'SonarQube Scanner installer'
             }
             steps {
-                withSonarQubeEnv(credentialsId: 'SonarRemote', installationName: 'SonarRemote') {
+                withSonarQubeEnv(credentialsId: 'SonarRemote', installationName: 'SonarQube Scanner installer') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectKey=Grupo4 \
                     -Dsonar.projectName=Grupo4 \
