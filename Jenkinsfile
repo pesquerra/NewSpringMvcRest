@@ -25,6 +25,23 @@ pipeline {
                 sh 'mvn clean verify' 
             }
         }
+
+        stage('SonarQube analysis') {
+            environment {
+                SCANNER_HOME = tool 'SonarQube Conexion'
+            }
+            steps {
+                withSonarQubeEnv(credentialsId: 'SecretTextContent', installationName: 'SonarQube') {
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
+                    -Dsonar.projectKey=projectKey \
+                    -Dsonar.projectName=projectName \
+                    -Dsonar.sources=src/ \
+                    -Dsonar.java.binaries=target/classes/ \
+                    -Dsonar.exclusions=src/test/java/****/*.java \
+                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+                }
+            }
+        }
         stage("Publish to Local Nexus Repository Manager") {
             steps {
                 script {
