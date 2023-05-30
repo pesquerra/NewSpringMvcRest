@@ -3,9 +3,9 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "localhost:8081"
-        NEXUS_REPOSITORY = "RepoPrueba3"
-        NEXUS_CREDENTIAL_ID = "nexus-admin-password"
+        NEXUS_URL = "137.184.220.68:8081"
+        NEXUS_REPOSITORY = "Grupo4Maven"
+        NEXUS_CREDENTIAL_ID = "Sonar-To-Jenkins-Remote"
         
     }
     stages {
