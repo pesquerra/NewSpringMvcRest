@@ -3,9 +3,9 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "137.184.220.68:8081"
-        NEXUS_REPOSITORY = "Grupo4Maven"
-        NEXUS_CREDENTIAL_ID = "Sonar-To-Jenkins-Remote"
+        NEXUS_URL = "localhost:8081/repository/Grupo5"
+        NEXUS_REPOSITORY = "Grupo5"
+        NEXUS_CREDENTIAL_ID = "Nexus"
         
     }
     stages {
@@ -27,13 +27,13 @@ pipeline {
         }
         stage('SonarQube analysis') {
             environment {
-                SCANNER_HOME = tool 'SonarQube Scanner installer'
+                SCANNER_HOME = tool 'SonarQube'
             }
             steps {
-                withSonarQubeEnv(credentialsId: 'SonarRemote', installationName: 'SonarQube') {
+                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner \
-                    -Dsonar.projectKey=Grupo4 \
-                    -Dsonar.projectName=Grupo4 \
+                    -Dsonar.projectKey=Grupo5 \
+                    -Dsonar.projectName=Grupo5 \
                     -Dsonar.sources=src/ \
                     -Dsonar.java.binaries=target/classes/ \
                     -Dsonar.exclusions=src/test/java/****/*.java \
@@ -79,7 +79,7 @@ pipeline {
     }
     post {
         always{
-            slackSend( channel: "#grupo4", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Grupo 4")
+            slackSend( channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Grupo 5")
             // junit (
             //     allowEmptyResults: true,
             //     testResults: '*/test-reports/.xml'
