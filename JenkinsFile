@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        //Conexion Nexus
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "localhost:8081/repository/Grupo5"
@@ -27,11 +28,13 @@ pipeline {
         }
         stage('SonarQube analysis') {
             environment {
+                //Se configura la conexion mediante el nombre configurado en Jenkins
                 SCANNER_HOME = tool 'SonarQube Conection'
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner \
+                    //Se configura el repositorio con las configuraciones de Nexus
                     -Dsonar.projectKey=Grupo5 \
                     -Dsonar.projectName=Grupo5 \
                     -Dsonar.sources=src/ \
