@@ -20,7 +20,8 @@ pipeline {
                 sh 'mvn clean verify' 
             }
         }
-/*        stage('SonarQube analysis') {
+/*
+        stage('SonarQube analysis') {
             environment {
                 //Se configura la conexion mediante el nombre configurado en Jenkins
                 SCANNER_HOME = tool 'SonarQube Conection'
@@ -37,7 +38,8 @@ pipeline {
                     -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
                 }
             }
-        }*/
+        }
+ */
         
     }
     post {
