@@ -3,31 +3,26 @@ pipeline {
     
     stages {
 
+        stage('Limpieza') { 
+            steps {
+                echo "Limpieza"
+                sh "mvn clean"
+            }
+        }
         stage('Contruccion') { 
             steps {
             echo "Contruccion"
                 sh 'mvn -B package' 
             }
         }
-
-        stage('SonarQube analysis') {
-            environment {
-                //Se configura la conexion mediante el nombre configurado en Jenkins
-                SCANNER_HOME = tool 'SonarQube Conection'
-            }
+        stage('Test') { 
             steps {
-                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
-                    sh '''$SCANNER_HOME/bin/sonar-scanner \
-                    //Se configura el repositorio con las configuraciones de Nexus
-                    -Dsonar.projectKey=Leccion7 \
-                    -Dsonar.projectName=Leccion7 \
-                    -Dsonar.sources=src/ \
-                    -Dsonar.java.binaries=target/classes/ \
-                    -Dsonar.exclusions=src/test/java/****/*.java \
-                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-                }
+             echo "Test"
+                sh 'mvn clean verify' 
             }
         }
+
+        
  
         
     }
