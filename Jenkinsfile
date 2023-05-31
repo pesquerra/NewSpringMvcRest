@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     stages {
-        stage('Limpieza') { 
-            steps {
-                echo "Limpieza"
-                sh "mvn clean"
-            }
+//        stage('Limpieza') { 
+//            steps {
+//                echo "Limpieza"
+//                sh "mvn clean"
+//            }
         }
         stage('Contruccion') { 
             steps {
