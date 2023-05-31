@@ -9,19 +9,21 @@ pipeline {
         
     }
     stages {
-        stage('Inicio') { 
+        stage('Limpieza') { 
             steps {
-                echo "Este es el inicio"
+                echo "Limpieza"
+                sh "mvn clean"
             }
         }
-        stage('Build') { 
+        stage('Contruccion') { 
             steps {
+            echo "Contruccion"
                 sh 'mvn -B package' 
-                // sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test') { 
             steps {
+             echo "Test"
                 sh 'mvn clean verify' 
             }
         }
@@ -50,7 +52,7 @@ pipeline {
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        echo "***  NEXUS - Archivo: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
@@ -71,7 +73,7 @@ pipeline {
                             ]
                         );
                     } else {
-                        error "*** File: ${artifactPath}, could not be found";
+                        error "*** NEXUS - Archivo: ${artifactPath}, no fue encontrado";
                     }
                 }
             }
@@ -79,24 +81,13 @@ pipeline {
     }
     post {
         always{
-            slackSend( channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Grupo 5")
-            // junit (
-            //     allowEmptyResults: true,
-            //     testResults: '*/test-reports/.xml'
-            // )   
-            //
-            // slackSend( channel: "#fundamentos-de-devops", token: "slack_webhook token", color: "good", message: "${custom_msg()}")                
+            slackSend( channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Grupo 5 - Ingreso")
+        }
+        failure{
+            slackSend(channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: ":warning: Prueba Grupo 5 - Hubo uns Falla :warning: ")
+        }
+        success{
+            slackSend(channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: ":smile: Prueba Grupo 5 - Ejecución Exitosa :smile: ")
         }
     }
-
-/*
-   def custom_msg() {
-    def JENKINS_URL= "localhost:8080"
-    def JOB_NAME = env.JOB_NAME
-    def BUILD_ID= env.BUILD_ID
-    def JENKINS_LOG= " FAILED: Job [${env.JOB_NAME}] Logs path: ${JENKINS_URL}/job/${JOB_NAME}/${BUILD_ID}/consoleText"
-    return JENKINS_LOG
-   }
-*/
-
 }
