@@ -5,8 +5,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "localhost:8081/repository/Grupo5"
         NEXUS_REPOSITORY = "Grupo5"
-        NEXUS_CREDENTIAL_ID = "Nexus"
-        
+        NEXUS_CREDENTIAL_ID = "Nexus"        
     }
     stages {
         stage('Limpieza') { 
