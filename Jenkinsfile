@@ -84,11 +84,11 @@ pipeline {
             )   
         }
         success {
-            slackSend(channel: "#pruebas-jenkins", token: "Slack-cursodevops2023", color: "good", message: "Exito")
-            slackSend(channel: '#pruebas-jenkins', color: '#6EAB00', message: 'Funcionó :smile: :laughing: :wink: :thumbsup: :thumbsdown: :exclamation: :question: :fire: :rocket: :hourglass: :checkered_flag: :coffee: :beer: :pizza: :tada: :star: ', teamDomain: 'cursodevops2023', tokenCredentialId: 'Slack-cursodevops2023', username: 'jenkins') 
-            slackSend(channel: "#pruebas-jenkins", token: "Slack-cursodevops2023", color: "error", message: "${custom_msg()}")
+            slackSend(channel: '#pruebas-jenkins', token: "Slack-cursodevops2023", color: '#6EAB00', message: 'El Job termino con exito :smile: :laughing: :wink: :thumbsup: :thumbsdown: :exclamation: :question: :fire: :rocket: :hourglass: :checkered_flag: :coffee: :beer: :pizza: :tada: :star: ', teamDomain: 'cursodevops2023', username: 'jenkins') 
+            slackSend(channel: "#pruebas-jenkins", token: "Slack-cursodevops2023", color: "good", message: "${custom_msg()}")
         }
         failure{
+            slackSend(channel: "#pruebas-jenkins", token: "Slack-cursodevops2023", color: "warning", message: "El Job fallo")
             slackSend(channel: "#pruebas-jenkins", token: "Slack-cursodevops2023", color: "error", message: "${custom_msg()}")
         }
     }
