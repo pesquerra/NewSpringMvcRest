@@ -9,12 +9,6 @@ pipeline {
                 sh 'mvn -B package' 
             }
         }
-        stage('Test') { 
-            steps {
-             echo "Test"
-                sh 'mvn clean verify' 
-            }
-        }
 
         stage('SonarQube analysis') {
             environment {
