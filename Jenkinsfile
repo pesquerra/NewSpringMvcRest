@@ -1,6 +1,13 @@
 pipeline {
     agent any
-
+    environment {
+        //Conexion Nexus
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "localhost:8081/repository/Grupo5"
+        NEXUS_REPOSITORY = "Grupo5"
+        NEXUS_CREDENTIAL_ID = "Nexus"        
+    }
     stages {
 
         stage('inicio') { 
