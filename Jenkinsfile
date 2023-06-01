@@ -24,14 +24,14 @@ pipeline {
         stage('SonarQube analysis') {
             environment {
                 //Se configura la conexion mediante el nombre configurado en Jenkins
-                SCANNER_HOME = tool 'SonarQube Conection'
+                SCANNER_HOME = tool 'SonarQube Conexion'
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
                     bat '''$SCANNER_HOME/bin/sonar-scanner \
                     //Se configura el repositorio con las configuraciones de Nexus
-                    -Dsonar.projectKey=Grupo5 \
-                    -Dsonar.projectName=Grupo5 \
+                    -Dsonar.projectKey=Leccion7 \
+                    -Dsonar.projectName=Leccion7 \
                     -Dsonar.sources=src/ \
                     -Dsonar.java.binaries=target/classes/ \
                     -Dsonar.exclusions=src/test/java/****/*.java \
