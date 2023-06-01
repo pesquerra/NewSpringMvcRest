@@ -5,7 +5,7 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "localhost:8081/repository/Grupo5"
-        NEXUS_REPOSITORY = "Grupo5"
+        NEXUS_REPOSITORY = "Leccion7"
         NEXUS_CREDENTIAL_ID = "Nexus"        
     }
     stages {
