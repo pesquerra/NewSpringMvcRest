@@ -28,24 +28,24 @@ pipeline {
             }
         }
         
-//        stage('SonarQube analysis') {
-//            environment {
-//                //Se configura la conexion mediante el nombre configurado en Jenkins
-//                SCANNER_HOME = tool 'SonarQube Conection'
-//            }
-//            steps {
-//                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
-//                    bat '''$SONARQUBE-HOME/bin/windows-x86-64 \
-//                    //Se configura el repositorio con las configuraciones de Nexus
-//                    -Dsonar.projectKey=Leccion7 \
-//                    -Dsonar.projectName=Leccion7 \
-//                    -Dsonar.sources=src/ \
-//                    -Dsonar.java.binaries=target/classes/ \
-//                    -Dsonar.exclusions=src/test/java/****/*.java \
-//                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-//                }
-//            }
-//        }
+        stage('SonarQube analysis') {
+            environment {
+                //Se configura la conexion mediante el nombre configurado en Jenkins
+                SCANNER_HOME = tool 'SonarQube Conexion'
+            }
+            steps {
+                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
+                    bat '''$SONARQUBE-HOME/bin/windows-x86-64 \
+                    //Se configura el repositorio con las configuraciones de Nexus
+                    -Dsonar.projectKey=Leccion7 \
+                    -Dsonar.projectName=Leccion7 \
+                    -Dsonar.sources=src/ \
+                    -Dsonar.java.binaries=target/classes/ \
+                    -Dsonar.exclusions=src/test/java/****/*.java \
+                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+                }
+            }
+        }
         
         stage("Publish to Local Nexus Repository Manager") {
             steps {
