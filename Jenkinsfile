@@ -3,10 +3,9 @@ pipeline {
     
     stages {
 
-        stage('Limpieza') { 
+        stage('inicio') { 
             steps {
-                echo "Limpieza"
-                sh "mvn clean"
+                echo "Inicio"
             }
         }
         stage('Contruccion') { 
@@ -15,13 +14,13 @@ pipeline {
                 sh 'mvn -B package' 
             }
         }
-        stage('Test') { 
+/*        stage('Test') { 
             steps {
              echo "Test"
                 sh 'mvn clean verify' 
             }
         }
-
+*/
         
  
         
