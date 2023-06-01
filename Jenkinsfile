@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube analysis') {
             environment {
                 //Se configura la conexion mediante el nombre configurado en Jenkins
-                SONARQUBE-HOME = tool 'SonarQube Conexion'
+                SCANNER_HOME = tool 'SonarQube Conexion'
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
