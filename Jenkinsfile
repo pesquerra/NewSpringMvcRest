@@ -11,13 +11,13 @@ pipeline {
         stage('Contruccion') { 
             steps {
             echo "Contruccion"
-                sh 'mvn -B package' 
+                bat 'mvn -B package' 
             }
         }
 /*        stage('Test') { 
             steps {
              echo "Test"
-                sh 'mvn clean verify' 
+                bat 'mvn clean verify' 
             }
         }
 */
