@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
-                    bat '''$SCANNER_HOME/bin/sonar-scanner \
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
                     //Se configura el repositorio con las configuraciones de Nexus
                     -Dsonar.projectKey=Leccion7 \
                     -Dsonar.projectName=Leccion7 \
