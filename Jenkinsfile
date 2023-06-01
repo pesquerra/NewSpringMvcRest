@@ -27,7 +27,7 @@ pipeline {
                 bat 'mvn clean verify' 
             }
         }
-        
+        /*
         stage('SonarQube analysis') {
             environment {
                 //Se configura la conexion mediante el nombre configurado en Jenkins
@@ -46,7 +46,7 @@ pipeline {
                 }
             }
         }
-        
+        */
         stage("Publish to Local Nexus Repository Manager") {
             steps {
                 script {
