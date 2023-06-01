@@ -66,7 +66,7 @@ pipeline {
         }
 
     }
-    
+    /*
     post {
         always{
             slackSend( channel: "#general", token: "Slack", color: "good", message: "Prueba Pablo - inicio")
@@ -78,5 +78,5 @@ pipeline {
             slackSend(channel: "#general", token: "Slack", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
         }
     }
-    
+    */
 }
