@@ -66,17 +66,17 @@ pipeline {
         }
 
     }
-    /*
+    
     post {
         always{
-            slackSend( channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Pablo - inicio")
+            slackSend( channel: "#general", token: "Slack", color: "good", message: "Prueba Pablo - inicio")
         }
         failure{
-            slackSend(channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: ":warning: Prueba Pablo - Hubo uns Falla :warning: ")
+            slackSend(channel: "#general", token: "Slack", color: "good", message: ":warning: Prueba Pablo - Hubo uns Falla :warning: ")
         }
         success{
-            slackSend(channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
+            slackSend(channel: "#general", token: "Slack", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
         }
     }
-    */
+    
 }
