@@ -14,13 +14,31 @@ pipeline {
                 bat 'mvn -B package' 
             }
         }
-/*        stage('Test') { 
+        stage('Test') { 
             steps {
              echo "Test"
                 bat 'mvn clean verify' 
             }
         }
-*/
+        
+        stage('SonarQube analysis') {
+            environment {
+                //Se configura la conexion mediante el nombre configurado en Jenkins
+                SCANNER_HOME = tool 'SonarQube Conection'
+            }
+            steps {
+                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
+                    //Se configura el repositorio con las configuraciones de Nexus
+                    -Dsonar.projectKey=Grupo5 \
+                    -Dsonar.projectName=Grupo5 \
+                    -Dsonar.sources=src/ \
+                    -Dsonar.java.binaries=target/classes/ \
+                    -Dsonar.exclusions=src/test/java/****/*.java \
+                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+                }
+            }
+        }
         
  
         
