@@ -27,7 +27,26 @@ pipeline {
                 bat 'mvn clean verify' 
             }
         }
-       
+        
+        stage('SonarQube analysis') {
+            environment {
+                //Se configura la conexion mediante el nombre configurado en Jenkins
+                SCANNER_HOME = tool 'SonarQube Conection'
+            }
+            steps {
+                withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
+                    sh '''$SONARQUBE-HOME/bin/windows-x86-64 \
+                    //Se configura el repositorio con las configuraciones de Nexus
+                    -Dsonar.projectKey=Leccion7 \
+                    -Dsonar.projectName=Leccion7 \
+                    -Dsonar.sources=src/ \
+                    -Dsonar.java.binaries=target/classes/ \
+                    -Dsonar.exclusions=src/test/java/****/*.java \
+                    -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+                }
+            }
+        }
+        
         stage("Publish to Local Nexus Repository Manager") {
             steps {
                 script {
