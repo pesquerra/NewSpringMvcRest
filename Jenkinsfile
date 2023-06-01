@@ -26,6 +26,7 @@ pipeline {
  
         
     }
+    /*
     post {
         always{
             slackSend( channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: "Prueba Pablo - inicio")
@@ -37,4 +38,5 @@ pipeline {
             slackSend(channel: "#grupo5", token: "ffx7Fj80ByIBWTpKm7bj3M2L", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
         }
     }
+    */
 }
