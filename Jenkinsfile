@@ -69,13 +69,13 @@ pipeline {
     
     post {
         always{
-            slackSend( channel: "#general", token: "SlackEsquemon", color: "good", message: "Prueba Pablo - inicio")
+            slackSend( channel: "#fundamentos-devops", token: "SlackEsquemon", color: "good", message: "Prueba Pablo - inicio")
         }
         failure{
-            slackSend(channel: "#general", token: "SlackEsquemon", color: "good", message: ":warning: Prueba Pablo - Hubo uns Falla :warning: ")
+            slackSend(channel: "#fundamentos-devops", token: "SlackEsquemon", color: "good", message: ":warning: Prueba Pablo - Hubo uns Falla :warning: ")
         }
         success{
-            slackSend(channel: "#general", token: "SlackEsquemon", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
+            slackSend(channel: "#fundamentos-devops", token: "SlackEsquemon", color: "good", message: ":smile: Prueba Pablo - Ejecución Exitosa :smile: ")
         }
     }
     
