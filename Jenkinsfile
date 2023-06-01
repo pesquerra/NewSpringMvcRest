@@ -4,7 +4,7 @@ pipeline {
         //Conexion Nexus
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "localhost:8081/repository/Grupo5"
+        NEXUS_URL = "localhost:8081/repository/Leccion7"
         NEXUS_REPOSITORY = "Leccion7"
         NEXUS_CREDENTIAL_ID = "Nexus"        
     }
